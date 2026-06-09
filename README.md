@@ -23,11 +23,11 @@ Three counter metrics in Vector's memory enrichment table : memory_enrichment_ta
 
 ### Expected Behavior
 
-[What should happen?]
+The three memory enrichment table counter metrics should be named memory_enrichment_table_failed_insertions_total, memory_enrichment_table_failed_reads_total, and memory_enrichment_table_ttl_expirations_total, conforming to Vector's instrumentation spec which mandates that all counters end with _total.
 
 ### Current Behavior
 
-[What actually happens?]
+The three counters are currently emitted without the _total suffix (memory_enrichment_table_failed_insertions, memory_enrichment_table_failed_reads, memory_enrichment_table_ttl_expirations), violating the instrumentation spec. This means anyone scraping these metrics. For example via Prometheus: receives non-compliant metric names that are inconsistent with the rest of Vector's counter conventions.
 
 ### Affected Components
 
